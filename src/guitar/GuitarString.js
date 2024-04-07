@@ -6,14 +6,18 @@ const fretBox = {
     height: "50px"
 };
 
-function Fret() {
+export function Fret() {
     return (
         <button style={fretBox}/>
     );
 }
 
-export default function GuitarString() {
+export function GuitarString({numFrets}) {
+    const frets = Array.from({length: numFrets}).map(x => <Fret/>);
+
     return (
-        <Fret></Fret>
+        <div>
+            {frets}
+        </div>
     )
 }

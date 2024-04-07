@@ -1,12 +1,10 @@
 import './App.css';
-import { GuitarString } from './guitarString/GuitarString.js';
+import {Guitar} from './guitar/Guitar';
 
 function App() {
   return (
     <div> 
-      <GuitarString>
-
-      </GuitarString>
+      <Guitar numStrings={6}/>
     </div>
   );
 }
