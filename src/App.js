@@ -3,7 +3,7 @@ import {Guitar} from './guitar/Guitar';
 
 function App() {
   return (
-    <div> 
+    <div className="App"> 
       <Guitar numStrings={6}/>
     </div>
   );

@@ -1,0 +1,19 @@
+.fretBox {
+    color: gray;
+    background-color: DodgerBlue; 
+    border-radius: 25px;
+    width: 100px;
+    height: 50px
+}
+
+.guitarString {
+    color: cornflowerblue;
+    background-color: cornflowerblue;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 50px;
+}
+/*
+    Might switch this to JS object style, and export the stuff.
+*/

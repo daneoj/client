@@ -1,0 +1,12 @@
+.guitar {
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 50px;
+    padding: 20px;
+}

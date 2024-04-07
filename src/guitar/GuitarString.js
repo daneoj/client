@@ -1,14 +1,8 @@
-const fretBox = {
-    color: "gray",
-    backgroundColor: "DodgerBlue",
-    padding: "10px",
-    width: "70px",
-    height: "50px"
-};
+import './GuitarString.css';
 
 export function Fret() {
     return (
-        <button style={fretBox}/>
+        <button className="fretBox"/>
     );
 }
 
@@ -16,7 +10,7 @@ export function GuitarString({numFrets}) {
     const frets = Array.from({length: numFrets}).map(x => <Fret/>);
 
     return (
-        <div>
+        <div className="guitarString">
             {frets}
         </div>
     )
