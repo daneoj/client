@@ -1,17 +1,27 @@
 import './GuitarString.css';
 
-export function Fret() {
+export function Fret({offSet, fretClicked}) {
+    const fretCallback = () => {
+        return fretClicked(offSet);
+    }
     return (
-        <button className="fretBox"/>
+        <button className="fretBox" onClick={fretCallback}/>
     );
 }
 
-export function GuitarString({numFrets}) {
-    const frets = Array.from({length: numFrets}).map(x => <Fret/>);
+export function GuitarString({numFrets, startingNote, fretClick}) {
+    let offSet = 0;
+    const fretCallback = (fretNum) => {
+        return fretClick(startingNote, fretNum);
+    }
+    const createFret = (fretNum) => {
+        offSet++;
+        return <Fret offSet={offSet} fretClicked={fretCallback}/>
+    }
 
     return (
         <div className="guitarString">
-            {frets}
+            {Array.from({length: numFrets}).map(x=> createFret(offSet))}
         </div>
     )
 }
