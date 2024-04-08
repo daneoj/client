@@ -41,5 +41,5 @@
   "devDependencies": {
     "gh-pages": "^6.1.1"
   },
-  "homepage": "https:://daneoj.github.io/client"
+  "homepage": "https://daneoj.github.io/client/"
 }
