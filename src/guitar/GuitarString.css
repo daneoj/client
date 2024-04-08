@@ -7,6 +7,14 @@
     margin: 10px;
 }
 
+.fretBox:hover {
+    background-color: cadetblue;
+}
+
+.selected {
+    background-color: tomato;
+}
+
 .guitarString {
     color: cornflowerblue;
     background-color: cornflowerblue;
@@ -15,6 +23,10 @@
     padding: 10px;
     border-radius: 50px;
     margin: 10px;
+}
+
+.guitarString:hover {
+    background-color: aqua;
 }
 /*
     Might switch this to JS object style, and export the stuff.

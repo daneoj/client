@@ -1,7 +1,8 @@
 import * as Tone from 'tone';
 
-const synth = new Tone.PluckSynth().toDestination();
-synth.resonance = 0.99;
+const synth = new Tone.PolySynth(Tone.PluckSynth).toDestination();
+//const synth = new Tone.PluckSynth().toDestination();
+synth.set({resonance: 0.99});
 
 const basicNotes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 
@@ -9,7 +10,7 @@ export function startTone() {
     Tone.start();
 }
 export function playNote(note, duration) {
-    synth.triggerAttackRelease(note, duration);
+    synth.triggerAttackRelease(note, duration, Tone.now());
 }
 
 export function convertNote(note, fret) {
