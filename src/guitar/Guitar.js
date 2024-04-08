@@ -20,7 +20,7 @@ export function Guitar({strings}) {
             await startTone();
             setToneStarted(true);
         }
-        setFrets(strings.map((x, idx) => 0));
+        setFrets(currentFrets.map((x, idx) => {return idx === stringNum ? fretNum : x}));
         playNote(convertNote(strings[stringNum], fretNum), 1.0);
     }
 

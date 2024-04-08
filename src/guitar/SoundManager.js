@@ -1,8 +1,9 @@
 import * as Tone from 'tone';
 
-const synth = new Tone.PolySynth(Tone.PluckSynth).toDestination();
-//const synth = new Tone.PluckSynth().toDestination();
-synth.set({resonance: 0.99});
+const synth = new Tone.PolySynth(Tone.FMSynth).toDestination();
+synth.volume.value = -10;
+
+synth.set({resonance: 0.99 });
 
 const basicNotes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 
