@@ -2,17 +2,18 @@
     color: gray;
     background-color: DodgerBlue; 
     border-radius: 25px;
+    border-style: none;
     width: 100px;
     height: 50px;
     margin: 10px;
 }
 
 .fretBox:hover {
-    background-color: cadetblue;
+    background-color: rgb(164, 199, 235);
 }
 
 .selected {
-    background-color: tomato;
+    background-color: rgb(226, 229, 255);
 }
 
 .guitarString {
@@ -26,7 +27,7 @@
 }
 
 .guitarString:hover {
-    background-color: aqua;
+    background-color: rgb(55, 118, 235);
 }
 /*
     Might switch this to JS object style, and export the stuff.

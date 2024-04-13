@@ -1,7 +1,7 @@
 import * as Tone from 'tone';
 
 const synth = new Tone.PolySynth(Tone.FMSynth).toDestination();
-synth.volume.value = -10;
+synth.volume.value = -35;
 
 synth.set({resonance: 0.99 });
 

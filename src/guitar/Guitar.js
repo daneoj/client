@@ -39,7 +39,7 @@ export function Guitar({strings}) {
             <div className="guitar">
                 {guitarStrings}
             </div>
-            <button onClick={handlePlayChordClicked}> Play Chord </button>
+            <button className="chordBut" onClick={handlePlayChordClicked}> Play Chord </button>
         </div>
     )
 }
