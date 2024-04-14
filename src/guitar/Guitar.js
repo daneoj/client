@@ -1,6 +1,6 @@
 import  {GuitarString} from './GuitarString';
 import './Guitar.css';
-import {startTone, playNote, convertNote} from './SoundManager'; 
+import {startTone, playNote, playNotes, convertNote} from './SoundManager'; 
 import {useEffect, useState} from 'react';
 const numFrets = 6;
 
@@ -21,7 +21,7 @@ export function Guitar({strings}) {
             setToneStarted(true);
         }
         setFrets(currentFrets.map((x, idx) => {return idx === stringNum ? fretNum : x}));
-        playNote(convertNote(strings[stringNum], fretNum), 1.0);
+        playNote(stringNum, convertNote(strings[stringNum], fretNum), 1.0);
     }
 
     const handlePlayChordClicked = async() => {
@@ -29,7 +29,7 @@ export function Guitar({strings}) {
             await startTone();
             setToneStarted(true);
         }
-        playNote(currentFrets.map((x, i) => convertNote(strings[i], x)), 1.0);
+        playNotes(strings.map((e, i) => i ), currentFrets.map((x, i) => convertNote(strings[i], x)), 1.0);
     }
     
     const guitarStrings = Array.from(strings).map((x, idx) => <GuitarString numFrets={numFrets} stringNum={idx} fretClick={handleFretClicked}/>);
