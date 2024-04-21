@@ -1,21 +1,18 @@
 import './GuitarString.css';
+import {Fret} from './Fret'
 import {useState} from 'react';
 
-export function Fret({offSet, fretClicked, selected}) {
-    const fretCallback = () => {
-        return fretClicked(offSet);
-    }
-    return (
-        <button className={selected ? "fretBox selected" : "fretBox"} onClick={fretCallback}/>
-    );
-}
-
-export function GuitarString({numFrets, stringNum, fretClick}) {
-    let offSet = -1;
+export function GuitarString({numFrets, stringNum, fretClick, mutes, setMute}) {
+    let offSet = 0;
     const [currentFret, setFret] = useState(0);
+    const [currentNote, setNote] = useState("");
+    const muteClick = () => {
+        setMute(mutes.map((x, idx) => {return idx==stringNum ? !x : x}));
+    }
     const fretCallback = (fretNum) => {
-        setFret(fretNum);
-        return fretClick(stringNum, fretNum);
+        const realFret = currentFret === fretNum ? 0 : fretNum; 
+        setFret(realFret);
+        return fretClick(stringNum, realFret);
     }
     const createFret = (fretNum) => {
         offSet++;
@@ -23,8 +20,11 @@ export function GuitarString({numFrets, stringNum, fretClick}) {
     }
 
     return (
-        <div className="guitarString">
-            {Array.from({length: numFrets}).map(x=> createFret(offSet))}
+        <div>
+            <div className="guitarString">
+                <button className={mutes[stringNum] ? "muteButton" : "muteButton muteButtonSelected"} Text={setNote} onClick= {muteClick} />
+                {Array.from({ length: numFrets }).map(x => createFret(offSet))}
+            </div>
         </div>
     )
 }

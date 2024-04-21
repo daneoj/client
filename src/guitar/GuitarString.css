@@ -1,27 +1,9 @@
-.fretBox {
-    color: gray;
-    background-color: DodgerBlue; 
-    border-radius: 25px;
-    border-style: none;
-    width: 100px;
-    height: 50px;
-    margin: 10px;
-}
-
-.fretBox:hover {
-    background-color: rgb(164, 199, 235);
-}
-
-.selected {
-    background-color: rgb(226, 229, 255);
-}
 
 .guitarString {
     color: cornflowerblue;
     background-color: cornflowerblue;
     width: fit-content;
     height: fit-content;
-    padding: 10px;
     border-radius: 50px;
     margin: 10px;
 }
@@ -32,3 +14,15 @@
 /*
     Might switch this to JS object style, and export the stuff.
 */
+.muteButton {
+    border-radius: 25px;
+    margin: 10px;
+    border-style: none;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(225, 221, 255);
+}
+
+.muteButtonSelected {
+    background-color: rgb(255, 255, 255);
+}

@@ -2,11 +2,13 @@ import  {GuitarString} from './GuitarString';
 import './Guitar.css';
 import {startTone, playNote, playNotes, convertNote} from './SoundManager'; 
 import {useEffect, useState} from 'react';
-const numFrets = 6;
+const numFrets = 7;
+const noteLength = 1.0;
 
 export function Guitar({strings}) {
     const [toneStarted, setToneStarted] = useState(false);
     const [currentFrets, setFrets] = useState(strings.map((x, idx) => 0));
+    const [mutes, setMutes] = useState(strings.map((x, idx) => false));
 
     useEffect( // want this to run once only
         () => {
@@ -21,7 +23,7 @@ export function Guitar({strings}) {
             setToneStarted(true);
         }
         setFrets(currentFrets.map((x, idx) => {return idx === stringNum ? fretNum : x}));
-        playNote(stringNum, convertNote(strings[stringNum], fretNum), 1.0);
+        playNote(stringNum, convertNote(strings[stringNum], fretNum), noteLength);
     }
 
     const handlePlayChordClicked = async() => {
@@ -29,10 +31,16 @@ export function Guitar({strings}) {
             await startTone();
             setToneStarted(true);
         }
-        playNotes(strings.map((e, i) => i ), currentFrets.map((x, i) => convertNote(strings[i], x)), 1.0);
+        mutes.map((x, idx) => {
+            if (!x) {
+                playNote(idx, convertNote(strings[idx], currentFrets[idx]), noteLength);
+            }
+        });
+        //playNotes(strings.map((e, i) => i ), currentFrets.map((x, i) => convertNote(strings[i], x)), 1.0);
     }
     
-    const guitarStrings = Array.from(strings).map((x, idx) => <GuitarString numFrets={numFrets} stringNum={idx} fretClick={handleFretClicked}/>);
+    const guitarStrings = Array.from(strings).map((x, idx) => <GuitarString numFrets={numFrets}
+        stringNum={idx} fretClick={handleFretClicked} mutes={mutes} setMute={setMutes} />);
 
     return (
         <div>
